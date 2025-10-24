@@ -1,0 +1,88 @@
+import java.util.Scanner;
+
+public class Motorcycle {
+    // Attributes
+    String make;
+    String color;
+    boolean engineState = false;
+
+    // Method to display attributes
+    void showAtts() {
+        System.out.println("Make: " + make);
+        System.out.println("Color: " + color);
+        System.out.println("Engine state: " + (engineState ? "on" : "off"));
+    }
+
+    // Method to start engine
+    void startEngine() {
+        if (engineState == true) {
+            System.out.println("The engine is already on.");
+        } else {
+            engineState = true;
+            System.out.println("The engine is now on.");
+        }
+    }
+
+    // Method to stop engine
+    void stopEngine() {
+        if (engineState == false) {
+            System.out.println("The engine is already off.");
+        } else {
+            engineState = false;
+            System.out.println("The engine is now off.");
+        }
+    }
+
+    // Main method with enhanced Scanner functionality
+    public static void main(String args[]) {
+        Scanner scanner = new Scanner(System.in);
+        Motorcycle m = new Motorcycle();
+        
+        // Get motorcycle details from user
+        System.out.println("=== Motorcycle Configuration ===");
+        System.out.print("Enter motorcycle make: ");
+        m.make = scanner.nextLine();
+        
+        System.out.print("Enter motorcycle color: ");
+        m.color = scanner.nextLine();
+        
+        System.out.println("\nMotorcycle created successfully!");
+        m.showAtts();
+        
+        // Interactive menu
+        int choice;
+        do {
+            System.out.println("\n=== Motorcycle Control Menu ===");
+            System.out.println("1. Start Engine");
+            System.out.println("2. Stop Engine");
+            System.out.println("3. Show Attributes");
+            System.out.println("4. Exit");
+            System.out.print("Enter your choice (1-4): ");
+            
+            choice = scanner.nextInt();
+            scanner.nextLine(); // consume newline
+            
+            switch (choice) {
+                case 1:
+                    System.out.println("\nStarting engine...");
+                    m.startEngine();
+                    break;
+                case 2:
+                    System.out.println("\nStopping engine...");
+                    m.stopEngine();
+                    break;
+                case 3:
+                    System.out.println("\nCurrent motorcycle status:");
+                    m.showAtts();
+                    break;
+                case 4:
+                    System.out.println("Goodbye!");
+                    break;
+                default:
+                    System.out.println("Invalid choice! Please enter 1-4.");
+            }
+        } while (choice != 4);
+        
+        scanner.close();
+    }
+}
