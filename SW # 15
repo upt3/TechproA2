@@ -1,0 +1,65 @@
+import java.util.Scanner;
+
+public class GradeCalculator {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Input student details
+        System.out.print("Enter student name: ");
+        String name = scanner.nextLine();
+
+        System.out.print("Enter grade and section: ");
+        String gradeSection = scanner.nextLine();
+
+        System.out.print("Enter strand: ");
+        String strand = scanner.nextLine();
+
+        // Input scores for each subject
+        System.out.print("Enter grade for Effective Communication: ");
+        double effectiveCommunication = scanner.nextDouble();
+
+        System.out.print("Enter grade for General Math: ");
+        double generalMath = scanner.nextDouble();
+
+        System.out.print("Enter grade for Life Skills: ");
+        double lifeSkills = scanner.nextDouble();
+
+        System.out.print("Enter grade for Pag aaral sa Kasaysayan: ");
+        double pagAaralSaKasaysayan = scanner.nextDouble();
+
+        System.out.print("Enter grade for Programming: ");
+        double programming = scanner.nextDouble();
+
+        System.out.print("Enter grade for General Science: ");
+        double generalScience = scanner.nextDouble();
+
+        // Calculate average rate
+        double averageRate = (effectiveCommunication + generalMath + lifeSkills +
+                pagAaralSaKasaysayan + programming + generalScience) / 6;
+
+        // Determine the grade based on the average rate
+        String finalGrade;
+        if (averageRate >= 90) {
+            finalGrade = "Excellent";
+        } else if (averageRate >= 80) {
+            finalGrade = "Very Satisfactory";
+        } else if (averageRate >= 70) {
+            finalGrade = "Satisfactory";
+        } else if (averageRate >= 60) {
+            finalGrade = "Did Not Meet the Expectations";
+        } else {
+            finalGrade = "Failed";
+        }
+
+        // Output the results
+        System.out.println("\n--- Student Grade Report ---");
+        System.out.println("Name: " + name);
+        System.out.println("Grade and Section: " + gradeSection);
+        System.out.println("Strand: " + strand);
+        System.out.printf("Average Rate: %.2f\n", averageRate);
+        System.out.println("Final Grade: " + finalGrade);
+
+        scanner.close();
+    }
+}
