@@ -1,0 +1,99 @@
+// Parent Class
+class Animal {
+    private String name;
+    private int age; // Corrected Lnt to int
+
+    // Setters
+    public void setName(String name){ // Corrected setlane to setName, - to =
+        this.name = name;
+    }
+    public void setAge(int age){ // Corrected - to =
+        this.age = age;
+    }
+
+    // Getters
+    public String getName(){
+        return name;
+    }
+    public int getAge(){ // Corrected getAgel to getAge
+        return age;
+    }
+
+    // Method to be overridden (Run-time polymorphism)
+    void sound(){
+        System.out.println("Some generic animal sound");
+    }
+
+    // Overloaded method (Compile-time polymorphism)
+    void sound(int times) { // Corrected (1 to {
+        for (int i=0; i < times; i++) { // Corrected ( to {
+            sound();
+        }
+    }
+
+    public static void main(String[] args) {
+        // Create instances of child classes
+        Dog dog = new Dog();
+        dog.setName("Buddy"); // Set name for dog
+        dog.setAge(3);
+
+        Cat cat = new Cat();
+        cat.setName("Whiskers"); // Set name for cat
+        cat.setAge(2);
+
+        Cow cow = new Cow();
+        cow.setName("Bessie"); // Set name for cow
+        cow.setAge(5);
+
+        System.out.println(dog.getName() + " says:");
+        dog.sound(); // Calls Dog's overridden sound()
+        dog.sound(3); // Calls Dog's overloaded sound(int times)
+        System.out.println();
+
+        System.out.println(cat.getName() + " says:");
+        cat.sound(); // Calls Cat's overridden sound()
+        cat.sound(2); // Calls Cat's overloaded sound(int times)
+        System.out.println();
+
+        System.out.println(cow.getName() + " says:");
+        cow.sound(); // Calls Cow's overridden sound()
+        cow.sound(4); // Calls Cow's overloaded sound(int times)
+        System.out.println();
+
+        // Demonstrating Run-time polymorphism with a base class reference
+        System.out.println("--- Demonstrating Run-time Polymorphism ---");
+        Animal myAnimal;
+
+        myAnimal = new Dog();
+        myAnimal.setName("Max");
+        System.out.println(myAnimal.getName() + " (as Animal ref) says:");
+        myAnimal.sound(); // Calls Dog's sound()
+
+        myAnimal = new Cat();
+        myAnimal.setName("Mittens");
+        System.out.println(myAnimal.getName() + " (as Animal ref) says:");
+        myAnimal.sound(); // Calls Cat's sound()
+    }
+}
+
+// Child Classes
+class Dog extends Animal{
+    @Override // Corrected @Override annotation
+    void sound(){
+        System.out.println("Bark bark!"); // Corrected syntax
+    }
+}
+
+class Cat extends Animal{
+    @Override // Corrected @Override annotation
+    void sound(){
+        System.out.println("Meow meow!"); // Corrected syntax
+    }
+}
+
+class Cow extends Animal {
+    @Override // Corrected @Override annotation
+    void sound(){
+        System.out.println("Moo moo!"); // Added specific sound for Cow
+    }
+}
