@@ -1,0 +1,49 @@
+import java.util.Scanner;
+
+public class QuizGame {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        String[] questions = {
+            "What is the capital of France?",
+            "Which planet is known as the Red Planet?",
+            "What is 5 + 7?",
+            "Who wrote 'Hamlet'?",
+            "What is the largest ocean on Earth?"
+        };
+        
+        String[] options = {
+            "A) London B) Paris C) Rome D) Berlin",
+            "A) Venus B) Mars C) Jupiter D) Saturn",
+            "A) 10 B) 11 C) 12 D) 13",
+            "A) Dickens B) Shakespeare C) Twain D) Hemingway",
+            "A) Atlantic B) Indian C) Arctic D) Pacific"
+        };
+        
+        char[] answers = {'B', 'B', 'C', 'B', 'D'};
+        char userAnswer;
+        int score = 0;
+        
+        System.out.println("Welcome to the Quiz Game!\n");
+        
+        for(int i = 0; i < questions.length; i++) {
+            System.out.println("Question " + (i+1) + ": " + questions[i]);
+            System.out.println(options[i]);
+            System.out.print("Your answer (A/B/C/D): ");
+            userAnswer = scanner.next().toUpperCase().charAt(0);
+            
+            if(userAnswer == answers[i]) {
+                System.out.println("Correct!\n");
+                score++;
+            } else {
+                System.out.println("Wrong! The correct answer was " + answers[i] + "\n");
+            }
+        }
+        
+        System.out.println("===== QUIZ COMPLETE =====");
+        System.out.println("Your Score: " + score + "/" + questions.length);
+        System.out.println("Percentage: " + (score * 100 / questions.length) + "%");
+        
+        scanner.close();
+    }
+}
